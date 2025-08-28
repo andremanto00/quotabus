@@ -44,3 +44,14 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+Dipendenze
+
+npm install axios react-router-dom
+npm install -D @types/react-router-dom @types/axios
+
+
+Install tailwindcss
+
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
