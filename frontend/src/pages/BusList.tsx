@@ -18,38 +18,31 @@ export default function BusList() {
   }, []);
 
   return (
-    <div>
-      <h2 className="text-3xl font-bold mb-8 text-gray-800">
+    <div className="main-content">
+      <h2 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "2rem", color: "#1f2937" }}>
         📋 Lista Autobus
       </h2>
 
       {buses.length === 0 ? (
-        <div className="text-center text-gray-500 mt-10">
+        <div style={{ textAlign: "center", color: "#6b7280", marginTop: "2rem" }}>
           Nessun autobus disponibile 😢
         </div>
       ) : (
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div style={{ display: "grid", gap: "1.5rem", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
           {buses.map((bus) => (
-            <div
-              key={bus.id}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 p-6"
-            >
-              <h3 className="text-xl font-semibold text-blue-600">
+            <div key={bus.id} className="card">
+              <h3 style={{ fontSize: "1.25rem", fontWeight: "bold", color: "#1d4ed8" }}>
                 🚍 {bus.license_plate}
               </h3>
-              <p className="mt-2 text-gray-600">
-                <span className="font-medium">Capacità:</span> {bus.capacity}
+              <p style={{ marginTop: "0.5rem", color: "#4b5563" }}>
+                <span style={{ fontWeight: "bold" }}>Capacità:</span> {bus.capacity}
               </p>
-              <span
-                className={`mt-4 inline-block px-3 py-1 text-sm rounded-full font-medium ${
-                  bus.status === "active"
-                    ? "bg-green-100 text-green-700"
-                    : bus.status === "maintenance"
-                    ? "bg-yellow-100 text-yellow-700"
-                    : "bg-red-100 text-red-700"
-                }`}
-              >
-                {bus.status}
+              <span className={`badge ${bus.status}`}>
+                {bus.status === "active"
+                  ? "Attivo"
+                  : bus.status === "maintenance"
+                  ? "In manutenzione"
+                  : "Non attivo"}
               </span>
             </div>
           ))}

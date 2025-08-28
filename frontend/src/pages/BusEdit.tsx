@@ -15,74 +15,65 @@ export default function BusEdit() {
         capacity,
         status,
       });
-      alert("Autobus aggiornato!");
+      alert("✅ Autobus aggiornato!");
     } catch (err) {
       console.error(err);
-      alert("Errore aggiornamento autobus");
+      alert("❌ Errore aggiornamento autobus");
     }
   };
 
   const handleDelete = async () => {
     try {
       await API.delete(`/buses/${id}`);
-      alert("Autobus eliminato!");
+      alert("✅ Autobus eliminato!");
     } catch (err) {
       console.error(err);
-      alert("Errore eliminazione autobus");
+      alert("❌ Errore eliminazione autobus");
     }
   };
 
   return (
-    <div className="p-6 space-y-4">
-      <h1 className="text-xl font-bold">Modifica o elimina autobus</h1>
+    <div className="main-content">
+      <div className="form-container">
+        <h2 style={{ fontSize: "1.5rem", fontWeight: "bold", marginBottom: "1rem", color: "#1f2937" }}>
+          ✏️ Modifica o elimina autobus
+        </h2>
 
-      <input
-        type="number"
-        placeholder="ID Autobus"
-        value={id}
-        onChange={(e) => setId(Number(e.target.value))}
-        className="border p-2 w-full"
-      />
+        <input
+          type="number"
+          placeholder="ID Autobus"
+          value={id}
+          onChange={(e) => setId(Number(e.target.value))}
+        />
 
-      <input
-        type="text"
-        placeholder="Targa"
-        value={licensePlate}
-        onChange={(e) => setLicensePlate(e.target.value)}
-        className="border p-2 w-full"
-      />
+        <input
+          type="text"
+          placeholder="Targa"
+          value={licensePlate}
+          onChange={(e) => setLicensePlate(e.target.value)}
+        />
 
-      <input
-        type="number"
-        placeholder="Capacità"
-        value={capacity}
-        onChange={(e) => setCapacity(Number(e.target.value))}
-        className="border p-2 w-full"
-      />
+        <input
+          type="number"
+          placeholder="Capacità"
+          value={capacity}
+          onChange={(e) => setCapacity(Number(e.target.value))}
+        />
 
-      <select
-        value={status}
-        onChange={(e) => setStatus(e.target.value)}
-        className="border p-2 w-full"
-      >
-        <option value="active">Active</option>
-        <option value="maintenance">Maintenance</option>
-        <option value="inactive">Inactive</option>
-      </select>
+        <select value={status} onChange={(e) => setStatus(e.target.value)}>
+          <option value="active">Attivo</option>
+          <option value="maintenance">In manutenzione</option>
+          <option value="inactive">Non attivo</option>
+        </select>
 
-      <div className="flex gap-4">
-        <button
-          onClick={handleUpdate}
-          className="bg-green-500 text-white px-4 py-2 rounded"
-        >
-          Aggiorna
-        </button>
-        <button
-          onClick={handleDelete}
-          className="bg-red-500 text-white px-4 py-2 rounded"
-        >
-          Elimina
-        </button>
+        <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
+          <button type="button" onClick={handleUpdate}>
+            Aggiorna
+          </button>
+          <button type="button" onClick={handleDelete} style={{ backgroundColor: "#fee2e2", color: "#991b1b" }}>
+            Elimina
+          </button>
+        </div>
       </div>
     </div>
   );

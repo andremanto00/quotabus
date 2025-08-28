@@ -3,25 +3,19 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import BusList from "./pages/BusList";
 import BusCreate from "./pages/BusCreate";
 import BusEdit from "./pages/BusEdit";
+import './App.css';
 
 export default function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100 flex flex-col">
         {/* Navbar */}
-        <nav className="bg-blue-600 shadow text-white px-6 py-4 flex justify-between items-center">
-          <h1 className="font-bold text-xl">🚍 QuotaBus</h1>
-          <div className="space-x-6">
-            <Link to="/" className="hover:text-gray-200 transition">
-              Lista
-            </Link>
-            <Link to="/create" className="hover:text-gray-200 transition">
-              Crea
-            </Link>
-            <Link to="/edit" className="hover:text-gray-200 transition">
-              Edit
-            </Link>
-
+        <nav className="navbar">
+          <h1 style={{ fontWeight: "bold", fontSize: "1.25rem" }}>🚍 QuotaBus</h1>
+          <div>
+            <Link to="/">Lista</Link>
+            <Link to="/create">Crea</Link>
+            <Link to="/edit">Edit</Link>
           </div>
         </nav>
 
