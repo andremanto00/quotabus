@@ -9,9 +9,9 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // Priority 1
-Route::get('/buses', [BusController::class, 'index']);   // restituisce tutti gli autobus
-Route::post('/buses', [BusController::class, 'store']);  // crea un nuovo autobus
+Route::get('/buses', [BusController::class, 'index'])->middleware('auth:sanctum');   // restituisce tutti gli autobus
+Route::post('/buses', [BusController::class, 'store'])->middleware('auth:sanctum');  // crea un nuovo autobus
 
 // Priority 2
-Route::put('/buses/{id}', [BusController::class, 'update']);    // aggiorna un autobus specifico
-Route::delete('/buses/{id}', [BusController::class, 'destroy']); // elimina un autobus specifico
+Route::put('/buses/{id}', [BusController::class, 'update'])->middleware('auth:sanctum');    // aggiorna un autobus specifico
+Route::delete('/buses/{id}', [BusController::class, 'destroy'])->middleware('auth:sanctum'); // elimina un autobus specifico

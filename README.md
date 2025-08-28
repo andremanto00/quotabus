@@ -59,3 +59,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+# Create user for santctum
+composer require laravel/sanctum
+
+php artisan tkinter
+
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+$user = User::create([
+    'name' => 'Mario Rossi',
+    'email' => 'mario@example.com',
+    'password' => Hash::make('password123')
+]);
+
+$user = App\Models\User::first(); // o trova l’utente specifico
+$token = $user->createToken('react-app')->plainTextToken;
+$token
